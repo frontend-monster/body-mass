@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { slideAnimation } from '../helpers/motion';
 
 
-export default function ImperialForm({ heightImp, setHeightImp, weightImp, setWeightImp, bmiImperial}) {
+export default function ImperialForm({ heightImp, setHeightImp, weightImp, setWeightImp, bmiImperial, minWeightStone, minWeightLbs, maxWeightStone, maxWeightLbs}) {
   return (
     <div>
       <div className="flex flex-col w-full">
@@ -57,11 +57,20 @@ export default function ImperialForm({ heightImp, setHeightImp, weightImp, setWe
         <div className="welcome-gradient p-6 flex-col xs:flex-row flex gap-4 xs:gap-10 justify-between xs:items-center mt-4 rounded-2xl xs:rounded-[100px_999px_999px_100px]">
           <h1 className="body-p !font-semibol !text-white">
             Your BMI is...
-            <span className="block heading xs:xl l !text-white">{bmiImperial}</span>
+            <span className="block heading xs:xl l !text-white">
+              {bmiImperial}
+            </span>
           </h1>
           <p className="body-p !text-[14px] !text-white">
-            Your BMI suggests you’re a healthy weight. Your ideal weight is
-            between <span className="!font-bold">9st 6lbs - 12st 10lbs</span>.
+            {bmiImperial < 18.5
+              ? "You're garbage. You need to put on some weight, bro. "
+              : bmiImperial >= 18.5 && bmiImperial <= 24.9
+              ? "Your BMI suggests you’re a healthy weight."
+              : bmiImperial >= 25 && bmiImperial <= 29.9
+              ? "You need to lose some weight, bro. "
+              : "YOU'RE FUCKING OBESE. LOSE WEIGHT. "}
+            Your ideal weight is between{" "}
+            <span className="!font-bold">{minWeightStone}st {minWeightLbs}lbs - {maxWeightStone}st {maxWeightLbs}lbs</span>.
           </p>
         </div>
       ) : (

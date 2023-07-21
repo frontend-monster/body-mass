@@ -3,7 +3,14 @@ import React from "react";
 import { slideAnimation } from "../helpers/motion";
 import CustomInput from "./input";
 
-export default function MetricForm({ height, setHeight, weight, setWeight, bmiMetric }) {
+export default function MetricForm({
+  height,
+  setHeight,
+  weight,
+  setWeight,
+  bmiMetric,
+  minWeight,
+  maxWeight}) {
   return (
     <div>
       <div className="grid grid-cols-1 place-items-start w-full s:grid-cols-2 gap-3 mb-6">
@@ -41,11 +48,22 @@ export default function MetricForm({ height, setHeight, weight, setWeight, bmiMe
         <div className="welcome-gradient mt-4 p-6 flex flex-col xs:flex-row gap-4 s:gap-10 justify-between xs:items-center rounded-2xl xs:rounded-[100px_999px_999px_100px]">
           <h1 className="body-p !font-semibold !text-white">
             Your BMI is...
-            <span className="block heading l xs:xl !text-white">{bmiMetric}</span>
+            <span className="block heading l xs:xl !text-white">
+              {bmiMetric}
+            </span>
           </h1>
           <p className="body-p !text-[14px] !text-white">
-            Your BMI suggests you’re a healthy weight. Your ideal weight is
-            between <span className="!font-bold">63.3kgs - 85.2kgs.</span>
+            {bmiMetric < 18.5
+              ? "You're garbage. You need to put on some weight, bro. "
+              : bmiMetric >= 18.5 && bmiMetric <= 24.9
+              ? "Your BMI suggests you’re a healthy weight."
+              : bmiMetric >= 25 && bmiMetric <= 29.9
+              ? "You need to lose some weight, bro. "
+              : "YOU'RE FUCKING OBESE. LOSE WEIGHT. "}
+            Your ideal weight is between{" "}
+            <span className="!font-bold">
+              {minWeight}kgs - {maxWeight}kgs.
+            </span>
           </p>
         </div>
       ) : (

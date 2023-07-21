@@ -29,6 +29,24 @@ function App() {
   let bmiMetric = Number(weight / (height / 100) ** 2);
   bmiMetric = bmiMetric.toFixed(1);
 
+  // METRIC
+  const heightInMeters = Number(height) / 100;
+  const minWeight = (18.5 * heightInMeters ** 2).toFixed(1);
+  const maxWeight = (24.9 * heightInMeters ** 2).toFixed(1);
+
+  // IMPERIAL
+  const heightInInches = Number(heightImp.ft) * 12 + Number(heightImp.in);
+
+  const minWeightPounds = ((18.5 * heightInInches ** 2) / 703).toFixed(1);
+  const maxWeightPounds = ((24.9 * heightInInches ** 2) / 703).toFixed(1);
+
+  const minWeightStone = Math.floor(Number(minWeightPounds) / 14);
+  const minWeightLbs = (Number(minWeightPounds) % 14).toFixed(1);
+
+  const maxWeightStone = Math.floor(Number(maxWeightPounds) / 14);
+  const maxWeightLbs = (Number(maxWeightPounds) % 14).toFixed(1);
+
+
   const iconList = [
     {
       img: iconEating,
@@ -47,8 +65,6 @@ function App() {
     },
   ];
 
-  // background: linear-gradient(290.1deg, #D6E6FE 0%, rgba(214, 252, 254, 0) 100%);
-  // border-radius: 0px 0px 35px 35px;
 
   return (
     <main>
@@ -137,6 +153,8 @@ function App() {
                 weight={weight}
                 setWeight={setWeight}
                 bmiMetric={bmiMetric}
+                minWeight={minWeight}
+                maxWeight={maxWeight}
               />
             ) : (
               <ImperialForm
@@ -145,6 +163,10 @@ function App() {
                 weightImp={setWeightImp}
                 setWeightImp={setWeightImp}
                 bmiImperial={bmiImperial}
+                minWeightStone={minWeightStone}
+                minWeightLbs={minWeightLbs}
+                maxWeightStone={maxWeightStone}
+                maxWeightLbs={maxWeightLbs}
               />
             )}
           </AnimatePresence>
