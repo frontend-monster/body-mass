@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overscroll-behavior: none;
+}
+.heading {
+  @apply font-inter font-semibold leading-[1.1] text-gunmetal;
+}
+
+.xl {
+  @apply text-[64px];
+}
+
+.l {
+  @apply text-[48px];
+}
+
+.m {
+  @apply text-[24px];
+}
+
+.s {
+  @apply text-[20px];
+}
+
+.body-p {
+  @apply font-inter font-normal text-[16px] leading-[1.5];
+}
+
+.input-numbers {
+  @apply text-base text-gunmetal font-inter font-semibold mt-1 p-4 bg-white border-[1px] border-borders rounded-lg shadow-md placeholder-gunmetal focus:outline-none focus:border-newBlue focus:ring-1 focus:ring-newBlue disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 hover:border-newBlue transition-all duration-200 placeholder:text-gunmetal/50 placeholder:font-inter placeholder:font-semibold placeholder:text-base;
+}
+
+.welcome-gradient {
+  background: linear-gradient(90deg, #345ff7 0%, #587dff 100%);
+}
+
+.welcome-gradient-2 {
+  background: linear-gradient(
+    290.1deg,
+    #d6e6fe 0%,
+    rgba(214, 252, 254, 0) 100%
+  );
+}
+
+.tips-gradient {
+  background: linear-gradient(
+    290.1deg,
+    #d6e6fe 0%,
+    rgba(214, 252, 254, 0) 100%
+  );
+  opacity: 0.25;
+}
+
+.grid-shadow {
+  box-shadow: 16px 32px 56px rgba(143, 174, 207, 0.25);
+}
